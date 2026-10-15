@@ -1,0 +1,40 @@
+{
+  "blockchain": "MG-CHAIN:7737005",
+  "native_coin": {
+    "name": "MG Coin",
+    "symbol": "MG",
+    "decimals": 18,
+    "total_supply": 1000000,
+    "genesis_supply": 100000,
+    "type": "NATIVE_L1",
+    "not_token": true,
+    "t_coin_removed": true,
+    "mg_only": true
+  },
+  "genesis_block": {
+    "index": 0,
+    "timestamp": "2026-10-14T02:55:00+03:00",
+    "miner": "u0_a348",
+    "location": "Cairo, Egypt",
+    "hash": "6cb238d9f5a1c4e7b8f9a0d1e2c3b4a5",
+    "allocation": {
+      "founder": "0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
+      "amount": 100000,
+      "note": "MG ONLY - First Phone-Native Coin"
+    }
+  },
+  "block_1": {
+    "index": 1,
+    "transfer": "100 MG",
+    "from_genesis": true,
+    "locked": true,
+    "permission": "r--r--r--"
+  },
+  "consensus": "Phone Proof-of-Lock (PoL)",
+  "locked_proof": {
+    "mg_chain.json": "698 bytes r--r--r--",
+    "PHONE_BLOCKCHAIN_LOCKED.json": "1.1K r--r--r--",
+    "locked_at": "Oct 14 02:55 Cairo"
+  },
+  "note": "This is NOT X Layer token 0x148f...eeaa - This is Native L1 MG Coin - MG ONLY - T-COIN DELETED"
+}
