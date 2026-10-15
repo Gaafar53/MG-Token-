@@ -1,23 +1,11 @@
 [
   {
     "index": 0,
-    "timestamp": 1791548240,
-    "data": "MG-CHAIN:7737005 GENESIS | Coin: MG-COIN | Supply: 1000000 | Symbol: MGC",
-    "prev_hash": "0000000000000000000000000000000000000000",
+    "timestamp": 1791936799,
+    "data": "MG-CHAIN:7737005:6cb2386d58e2de1e2ac773ff31953505f06d64bec566beb5592016eb3b400ef <-> TOKEN:0xfb516632419c252d70aa0c22f0962b2c0bf22865 Owner:0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
+    "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
     "hash": "6cb2386d58e2de1e2ac773ff31953505f06d64bec566beb5592016eb3b400ef",
     "wallet": "0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
-    "native_coin": "MG-COIN",
-    "symbol": "MGC"
-  },
-  {
-    "index": 1,
-    "timestamp": 1791548457,
-    "data": "100 MGC Minted to Owner",
-    "prev_hash": "6cb2386d58e2de1e2ac773ff31953505f06d64bec566beb5592016eb3b400ef",
-    "wallet": "0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
-    "native_coin": "MG-COIN",
-    "symbol": "MGC",
-    "amount": 100,
-    "hash": "bb98cafe16cde69c97f144c4674359fd0521708a5eeaf9a4855f290161ef3256"
+    "token": "0xfb516632419c252d70aa0c22f0962b2c0bf22865"
   }
 ]

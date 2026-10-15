@@ -1,0 +1,13 @@
+{
+  "chainId": 7777,
+  "chainName": "MG-CHAIN",
+  "nativeCurrency": {
+    "name": "MG-COIN",
+    "symbol": "MGC",
+    "decimals": 18,
+    "address": "0xfb516632419c252d70aa0c22f0962b2c0bf22865"
+  },
+  "rpc": ["https://mg-coin.lhr.life"],
+  "explorer": "https://mg-coin.lhr.life",
+  "tokenIsChain": true
+}

@@ -1,0 +1,51 @@
+import hashlib, json, time, os, http.server, socketserver
+WALLET="0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982"
+TOKEN="0x148f95e0364b1d290676f791e7c9500cb839eeaa"
+GENESIS="6cb2386d58e2de1e2ac773ff31953505f06d64bec566beb5592016eb3b400ef"
+CHAIN_ID=7737005
+FILE="mg_chain.json"
+
+def load():
+    if os.path.exists(FILE):
+        with open(FILE) as f: return json.load(f)
+    g={"index":0,"timestamp":int(time.time()),"data":f"MG-CHAIN:{CHAIN_ID}:{GENESIS} <-> TOKEN:{TOKEN} Owner:{WALLET}","prev_hash":"0"*64,"hash":GENESIS,"wallet":WALLET,"token":TOKEN}
+    with open(FILE,"w") as f: json.dump([g],f,indent=2)
+    return [g]
+
+def add(data):
+    c=load(); p=c[-1]
+    b={"index":len(c),"timestamp":int(time.time()),"data":data,"prev_hash":p["hash"],"wallet":WALLET,"token":TOKEN}
+    b["hash"]=hashlib.sha256(json.dumps(b,sort_keys=True).encode()).hexdigest()
+    c.append(b)
+    open(FILE,"w").write(json.dumps(c,indent=2))
+    return b
+
+class H(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        from urllib.parse import urlparse, parse_qs
+        q=parse_qs(urlparse(self.path).query)
+        if "add" in q and q["add"][0]:
+            add(q["add"][0])
+            self.send_response(302); self.send_header("Location","/"); self.end_headers(); return
+        self.send_response(200); self.send_header("Content-type","text/html; charset=utf-8"); self.end_headers()
+        chain=load()
+        blocks="".join([f"<div class=card><span>#{b['index']} {time.ctime(b['timestamp'])}</span><br><code>{b['hash']}</code><br>{b['data']}<br><small>TOKEN:{b.get('token','')} WALLET:{b.get('wallet','')[:10]}...</small></div>" for b in reversed(chain)])
+        html=f"""<html dir=rtl><head><meta charset=utf-8><meta name=viewport content="width=device-width"><style>body{{background:#080808;color:#eee;font-family:system-ui;padding:12px}}.card{{background:#131313;border:1px solid #222;border-radius:14px;padding:14px;margin:10px auto;max-width:700px}}code{{background:#1e1e1e;padding:6px;border-radius:7px;word-break:break-all;color:#00ff88;display:block;font-size:11px}}.world{{background:#003d1f;border:1px solid #00ff88}} a{{color:#00ff88}} input{{width:60%;padding:10px;border-radius:10px;border:1px solid #333;background:#111;color:#fff}} button{{padding:10px;border-radius:10px;border:0;background:#00ff88}}</style></head><body>
+<h1 style=color:#00ff88;text-align:center>🌍 MG-CHAIN WORLD LINKED</h1>
+<div class="card world"><b>WALLET:</b><code>{WALLET}</code><b>TOKEN:</b><code>{TOKEN}</code><b>Genesis:</b><code>{GENESIS}</code><br><a href="https://www.oklink.com/xlayer/token/{TOKEN}" target=_blank>OKLink Token</a> | <a href="https://www.oklink.com/xlayer/address/{WALLET}" target=_blank>OKLink Wallet</a></div>
+<div class=card><form><input name=add placeholder="تحويل 100 MG"><button>إضافة بلوك مربوط</button></form></div>
+{blocks}</body></html>"""
+        self.wfile.write(html.encode())
+    def log_message(self,*a): return
+
+load()
+print("✅ تم بناء البلوكشين من جديد مربوط بالعملة")
+with open(FILE) as f:
+    c=json.load(f)
+    print(f"Blocks: {len(c)}")
+    print(f"Token: {c[0]['token']}")
+    print(f"Wallet: {c[0]['wallet']}")
+    print("✅ مربوط بالعالم!")
+
+with socketserver.TCPServer(("0.0.0.0",8000), H) as httpd:
+    httpd.serve_forever()
