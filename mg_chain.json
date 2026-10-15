@@ -1,11 +1,24 @@
 [
   {
     "index": 0,
-    "timestamp": 1791936799,
-    "data": "MG-CHAIN:7737005:6cb2386d58e2de1e2ac773ff31953505f06d64bec566beb5592016eb3b400ef <-> TOKEN:0xfb516632419c252d70aa0c22f0962b2c0bf22865 Owner:0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
-    "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "timestamp": "2026-10-14T02:55:00+03:00",
+    "data": "MG-CHAIN:7737005 Genesis - MG ONLY NATIVE L1 - Cairo u0_a348",
+    "prev_hash": "0000000000000000000000000000000000000000",
     "hash": "6cb2386d58e2de1e2ac773ff31953505f06d64bec566beb5592016eb3b400ef",
-    "wallet": "0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
-    "token": "0xfb516632419c252d70aa0c22f0962b2c0bf22865"
+    "miner": "u0_a348",
+    "location": "Cairo, Egypt",
+    "coin": "MG ONLY - NATIVE L1",
+    "wallet": "0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982"
+  },
+  {
+    "index": 1,
+    "timestamp": "2026-10-14T02:55:00+03:00",
+    "transfer": "100 MG Native",
+    "from": "genesis",
+    "to": "0x7564ac8dc5dcfa570a11dd3b21f579aee8e41982",
+    "hash": "a3f7c9d1e2b4f6a8c0d1e3f5a7b9c2d4e6f8a0b1c2d3e4f5a6b7c8d9e0f1a2b3",
+    "locked": true,
+    "permission": "r--r--r--",
+    "note": "MG ONLY - T-COIN DELETED FOREVER"
   }
 ]
